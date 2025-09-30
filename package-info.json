@@ -1,0 +1,34 @@
+{
+  "name": "html-editor-pro",
+  "version": "1.0.0",
+  "homepage": "https://github.com/DiwanMalla/html-editor-pro",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiwanMalla/html-editor-pro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DiwanMalla/html-editor-pro/issues"
+  },
+  "keywords": [
+    "html-editor",
+    "css-editor", 
+    "javascript-editor",
+    "code-editor",
+    "web-development",
+    "monaco-editor",
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwindcss",
+    "real-time-preview",
+    "syntax-highlighting",
+    "dark-mode",
+    "responsive-design"
+  ],
+  "author": {
+    "name": "Diwan Malla",
+    "email": "malladipin@gmail.com",
+    "url": "https://diwanportfolio.vercel.app/"
+  },
+  "license": "MIT"
+}
