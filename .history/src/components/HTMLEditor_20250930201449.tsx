@@ -419,21 +419,21 @@ ${code.js}
           {showPreview && (
             <motion.div
               className="w-full lg:w-1/2 h-1/2 lg:h-full bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm"
-              initial={isMounted ? {
-                width: isLargeScreen ? 0 : "100%",
-                height: isLargeScreen ? "100%" : 0,
+              initial={{
+                width: window.innerWidth >= 1024 ? 0 : "100%",
+                height: window.innerWidth >= 1024 ? "100%" : 0,
                 opacity: 0,
-              } : { opacity: 0 }}
-              animate={isMounted ? {
-                width: isLargeScreen ? "50%" : "100%",
-                height: isLargeScreen ? "100%" : "50%",
+              }}
+              animate={{
+                width: window.innerWidth >= 1024 ? "50%" : "100%",
+                height: window.innerWidth >= 1024 ? "100%" : "50%",
                 opacity: 1,
-              } : { opacity: 1 }}
-              exit={isMounted ? {
-                width: isLargeScreen ? 0 : "100%",
-                height: isLargeScreen ? "100%" : 0,
+              }}
+              exit={{
+                width: window.innerWidth >= 1024 ? 0 : "100%",
+                height: window.innerWidth >= 1024 ? "100%" : 0,
                 opacity: 0,
-              } : { opacity: 0 }}
+              }}
               transition={{ type: "spring", duration: 0.4, ease: "easeOut" }}
             >
               <div className="h-full flex flex-col">
