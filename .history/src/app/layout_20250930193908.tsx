@@ -28,20 +28,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              // Initialize theme to avoid FOUC
-              document.documentElement.classList.toggle(
-                "dark",
-                localStorage.theme === "dark" ||
-                  (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
-              );
-            `,
-          }}
-        />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

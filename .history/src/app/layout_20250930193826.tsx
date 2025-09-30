@@ -15,10 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "HTML Editor Pro | Web Development Playground",
-  description:
-    "The ultimate HTML, CSS, and JavaScript editor with live preview. Build beautiful web projects with modern development tools.",
-  keywords:
-    "HTML editor, CSS editor, JavaScript editor, web development, code editor, live preview",
+  description: "The ultimate HTML, CSS, and JavaScript editor with live preview. Build beautiful web projects with modern development tools.",
+  keywords: "HTML editor, CSS editor, JavaScript editor, web development, code editor, live preview",
 };
 
 export default function RootLayout({
@@ -28,20 +26,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              // Initialize theme to avoid FOUC
-              document.documentElement.classList.toggle(
-                "dark",
-                localStorage.theme === "dark" ||
-                  (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
-              );
-            `,
-          }}
-        />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

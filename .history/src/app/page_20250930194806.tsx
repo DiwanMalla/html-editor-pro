@@ -38,7 +38,7 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <div className="max-w-4xl mx-auto">
-              <motion.h2
+              <motion.h2 
                 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-900 via-violet-900 to-slate-900 dark:from-white dark:via-violet-200 dark:to-white bg-clip-text text-transparent mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -46,29 +46,16 @@ export default function Home() {
               >
                 Welcome to HTML Editor Pro
               </motion.h2>
-              <motion.p
+              <motion.p 
                 className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                The ultimate web development playground. Write HTML, CSS, and
-                JavaScript with
-                <span className="font-semibold text-violet-600 dark:text-violet-400">
-                  {" "}
-                  real-time preview
-                </span>
-                ,
-                <span className="font-semibold text-purple-600 dark:text-purple-400">
-                  {" "}
-                  syntax highlighting
-                </span>
-                , and
-                <span className="font-semibold text-pink-600 dark:text-pink-400">
-                  {" "}
-                  modern development tools
-                </span>{" "}
-                all in one place.
+                The ultimate web development playground. Write HTML, CSS, and JavaScript with 
+                <span className="font-semibold text-violet-600 dark:text-violet-400"> real-time preview</span>, 
+                <span className="font-semibold text-purple-600 dark:text-purple-400"> syntax highlighting</span>, and 
+                <span className="font-semibold text-pink-600 dark:text-pink-400"> modern development tools</span> all in one place.
               </motion.p>
             </div>
           </motion.div>
@@ -76,9 +63,7 @@ export default function Home() {
 
         {/* Editor */}
         <div
-          className={`${
-            isEditorFullscreen ? "h-full" : "h-full px-6 pb-6"
-          } relative z-10`}
+          className={`${isEditorFullscreen ? "h-full" : "h-full px-6 pb-6"} relative z-10`}
         >
           <motion.div
             className="h-full rounded-2xl overflow-hidden shadow-2xl border border-slate-200/60 dark:border-slate-700/60 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl"
