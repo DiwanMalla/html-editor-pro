@@ -107,7 +107,7 @@ export default function Header({ onDeveloperClick }: HeaderProps) {
                 }}
               />
             </div>
-            <div className="min-w-0 flex-1 sm:flex-none sm:block">
+                        <div className="min-w-0 flex-1 sm:flex-none sm:block">
               <motion.h1
                 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-pink-400 bg-clip-text text-transparent tracking-tight leading-tight truncate"
                 initial={{ opacity: 0, y: 20 }}
@@ -156,7 +156,7 @@ export default function Header({ onDeveloperClick }: HeaderProps) {
               </Button>
             </motion.div>
 
-            <Button
+                        <Button
               variant="ghost"
               size="sm"
               onClick={() =>
@@ -174,7 +174,7 @@ export default function Header({ onDeveloperClick }: HeaderProps) {
             <Button
               variant="ghost"
               size="sm"
-              onClick={onDeveloperClick}
+              onClick={() => setShowDeveloperModal(true)}
               className="flex items-center space-x-1.5 lg:space-x-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all duration-200 text-xs lg:text-sm"
             >
               <User className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
@@ -205,10 +205,10 @@ export default function Header({ onDeveloperClick }: HeaderProps) {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-slate-200/50 dark:border-slate-700/50 pt-3 sm:pt-4 pb-4 sm:pb-6 mt-3 sm:mt-4"
+            className="md:hidden border-t border-slate-200/50 dark:border-slate-700/50 pt-6 pb-6 mt-4"
           >
-            <div className="flex flex-col space-y-3 sm:space-y-4">
-              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-3 sm:p-4">
+            <div className="flex flex-col space-y-4">
+              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">
                     Appearance
@@ -245,12 +245,10 @@ export default function Header({ onDeveloperClick }: HeaderProps) {
                   );
                   setMobileMenuOpen(false);
                 }}
-                className="flex items-center justify-start space-x-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all duration-200 py-3"
+                className="flex items-center justify-start space-x-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all duration-200"
               >
-                <Github className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="font-medium text-sm sm:text-base">
-                  View on GitHub
-                </span>
+                <Github className="w-5 h-5" />
+                <span className="font-medium">View on GitHub</span>
               </Button>
 
               <Button
@@ -260,10 +258,10 @@ export default function Header({ onDeveloperClick }: HeaderProps) {
                   onDeveloperClick();
                   setMobileMenuOpen(false);
                 }}
-                className="flex items-center justify-start space-x-3 bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white border-0 rounded-xl shadow-lg font-medium py-3"
+                className="flex items-center justify-start space-x-3 bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white border-0 rounded-xl shadow-lg font-medium"
               >
-                <User className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="text-sm sm:text-base">Meet the Developer</span>
+                <User className="w-5 h-5" />
+                <span>Meet the Developer</span>
               </Button>
             </div>
           </motion.div>

@@ -84,25 +84,19 @@ export default function DeveloperModal({
 
               <div className="grid grid-cols-3 gap-2 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
                 <div className="text-center p-2 sm:p-3 lg:p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg sm:rounded-xl">
-                  <div className="text-violet-500 font-bold text-lg sm:text-xl lg:text-2xl">
-                    1+
-                  </div>
+                  <div className="text-violet-500 font-bold text-lg sm:text-xl lg:text-2xl">1+</div>
                   <div className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm font-medium">
                     Years Coding
                   </div>
                 </div>
                 <div className="text-center p-2 sm:p-3 lg:p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg sm:rounded-xl">
-                  <div className="text-purple-500 font-bold text-lg sm:text-xl lg:text-2xl">
-                    50+
-                  </div>
+                  <div className="text-purple-500 font-bold text-lg sm:text-xl lg:text-2xl">50+</div>
                   <div className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm font-medium">
                     Projects Built
                   </div>
                 </div>
                 <div className="text-center p-2 sm:p-3 lg:p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg sm:rounded-xl">
-                  <div className="text-pink-500 font-bold text-lg sm:text-xl lg:text-2xl">
-                    ∞
-                  </div>
+                  <div className="text-pink-500 font-bold text-lg sm:text-xl lg:text-2xl">∞</div>
                   <div className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm font-medium">
                     Coffee Cups
                   </div>

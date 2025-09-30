@@ -272,21 +272,18 @@ ${code.js}
                 variant={activeTab === tab.id ? "default" : "ghost"}
                 size="sm"
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center space-x-1.5 sm:space-x-2.5 rounded-lg transition-all duration-200 font-medium text-xs sm:text-sm whitespace-nowrap ${
+                className={`flex items-center space-x-2.5 rounded-lg transition-all duration-200 font-medium ${
                   activeTab === tab.id
                     ? "bg-white dark:bg-slate-600 shadow-lg shadow-slate-200/50 dark:shadow-slate-900/50 text-slate-900 dark:text-white"
                     : "hover:bg-white/70 dark:hover:bg-slate-600/70 text-slate-600 dark:text-slate-400"
                 }`}
               >
                 <div
-                  className={`${
-                    activeTab === tab.id ? "text-violet-500" : ""
-                  } flex-shrink-0`}
+                  className={`${activeTab === tab.id ? "text-violet-500" : ""}`}
                 >
                   {tab.icon}
                 </div>
-                <span className="hidden sm:inline">{tab.label}</span>
-                <span className="sm:hidden text-xs">{tab.label.charAt(0)}</span>
+                <span>{tab.label}</span>
               </Button>
             ))}
           </div>

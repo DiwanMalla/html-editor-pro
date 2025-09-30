@@ -42,17 +42,17 @@ export default function DeveloperModal({
             </Button>
 
             <div className="p-4 sm:p-6 lg:p-8 xl:p-10">
-              <div className="flex justify-center mb-6 sm:mb-8">
+              <div className="flex justify-center mb-8">
                 <motion.div
                   className="relative"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-violet-500 via-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-lg sm:text-xl lg:text-2xl font-bold text-white shadow-lg">
+                  <div className="w-24 h-24 bg-gradient-to-br from-violet-500 via-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-2xl font-bold text-white shadow-lg">
                     DM
                   </div>
                   <motion.div
-                    className="absolute -top-1 -right-1 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full flex items-center justify-center"
+                    className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full flex items-center justify-center"
                     animate={{
                       scale: [1, 1.2, 1],
                       rotate: [0, 180, 360],
@@ -63,63 +63,57 @@ export default function DeveloperModal({
                       ease: "easeInOut",
                     }}
                   >
-                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full"></div>
+                    <div className="w-2 h-2 bg-white rounded-full"></div>
                   </motion.div>
                 </motion.div>
               </div>
 
-              <div className="text-center mb-6 sm:mb-8">
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white mb-2 sm:mb-3">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-3">
                   Diwan Malla
                 </h3>
-                <p className="text-sm sm:text-base text-violet-600 dark:text-violet-400 mb-3 sm:mb-4 font-semibold">
+                <p className="text-violet-600 dark:text-violet-400 mb-4 font-semibold">
                   Full Stack Developer & UI/UX Enthusiast
                 </p>
-                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed px-2">
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
                   Passionate about creating beautiful and functional web
                   applications. This HTML Editor Pro combines modern design with
                   powerful features to make coding fun! ✨
                 </p>
               </div>
 
-              <div className="grid grid-cols-3 gap-2 sm:gap-4 lg:gap-6 mb-6 sm:mb-8">
-                <div className="text-center p-2 sm:p-3 lg:p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg sm:rounded-xl">
-                  <div className="text-violet-500 font-bold text-lg sm:text-xl lg:text-2xl">
-                    1+
-                  </div>
-                  <div className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm font-medium">
+              <div className="grid grid-cols-3 gap-6 mb-8">
+                <div className="text-center p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+                  <div className="text-violet-500 font-bold text-2xl">1+</div>
+                  <div className="text-slate-500 dark:text-slate-400 text-sm font-medium">
                     Years Coding
                   </div>
                 </div>
-                <div className="text-center p-2 sm:p-3 lg:p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg sm:rounded-xl">
-                  <div className="text-purple-500 font-bold text-lg sm:text-xl lg:text-2xl">
-                    50+
-                  </div>
-                  <div className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm font-medium">
+                <div className="text-center p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+                  <div className="text-purple-500 font-bold text-2xl">50+</div>
+                  <div className="text-slate-500 dark:text-slate-400 text-sm font-medium">
                     Projects Built
                   </div>
                 </div>
-                <div className="text-center p-2 sm:p-3 lg:p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg sm:rounded-xl">
-                  <div className="text-pink-500 font-bold text-lg sm:text-xl lg:text-2xl">
-                    ∞
-                  </div>
-                  <div className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm font-medium">
+                <div className="text-center p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+                  <div className="text-pink-500 font-bold text-2xl">∞</div>
+                  <div className="text-slate-500 dark:text-slate-400 text-sm font-medium">
                     Coffee Cups
                   </div>
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-2 lg:space-x-4 mb-6 sm:mb-8">
+              <div className="flex justify-center space-x-4 mb-8">
                 <motion.a
                   href="https://github.com/diwanmalla"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-lg sm:rounded-xl transition-all duration-200 w-full sm:w-auto min-w-0"
+                  className="flex items-center space-x-2 px-4 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-xl transition-all duration-200"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <Github className="w-4 h-4 sm:w-5 sm:h-5 text-slate-700 dark:text-slate-300 flex-shrink-0" />
-                  <span className="font-medium text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+                  <Github className="w-5 h-5 text-slate-700 dark:text-slate-300" />
+                  <span className="font-medium text-slate-700 dark:text-slate-300">
                     GitHub
                   </span>
                 </motion.a>
@@ -127,34 +121,34 @@ export default function DeveloperModal({
                   href="https://diwanportfolio.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-lg sm:rounded-xl transition-all duration-200 w-full sm:w-auto min-w-0"
+                  className="flex items-center space-x-2 px-4 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-xl transition-all duration-200"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-slate-700 dark:text-slate-300 flex-shrink-0" />
-                  <span className="font-medium text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+                  <Globe className="w-5 h-5 text-slate-700 dark:text-slate-300" />
+                  <span className="font-medium text-slate-700 dark:text-slate-300">
                     Portfolio
                   </span>
                 </motion.a>
                 <motion.a
                   href="mailto:malladipin@gmail.com"
-                  className="flex items-center justify-center space-x-2 px-3 sm:px-4 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-lg sm:rounded-xl transition-all duration-200 w-full sm:w-auto min-w-0"
+                  className="flex items-center space-x-2 px-4 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-xl transition-all duration-200"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-slate-700 dark:text-slate-300 flex-shrink-0" />
-                  <span className="font-medium text-slate-700 dark:text-slate-300 text-sm sm:text-base">
+                  <Mail className="w-5 h-5 text-slate-700 dark:text-slate-300" />
+                  <span className="font-medium text-slate-700 dark:text-slate-300">
                     Email
                   </span>
                 </motion.a>
               </div>
 
-              <div className="bg-gradient-to-r from-violet-50 to-purple-50 dark:from-slate-800 dark:to-slate-700 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
-                <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base">
+              <div className="bg-gradient-to-r from-violet-50 to-purple-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-6 text-center">
+                <div className="flex items-center justify-center space-x-2 text-slate-600 dark:text-slate-300">
                   <span className="font-medium">Made with</span>
-                  <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 animate-pulse flex-shrink-0" />
+                  <Heart className="w-5 h-5 text-red-500 animate-pulse" />
                   <span className="font-medium">and lots of</span>
-                  <Coffee className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500 flex-shrink-0" />
+                  <Coffee className="w-5 h-5 text-amber-500" />
                   <span className="font-medium">by Diwan Malla</span>
                 </div>
               </div>

@@ -107,7 +107,7 @@ export default function Header({ onDeveloperClick }: HeaderProps) {
                 }}
               />
             </div>
-            <div className="min-w-0 flex-1 sm:flex-none sm:block">
+                        <div className="min-w-0 flex-1 sm:flex-none sm:block">
               <motion.h1
                 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-pink-400 bg-clip-text text-transparent tracking-tight leading-tight truncate"
                 initial={{ opacity: 0, y: 20 }}
@@ -156,7 +156,7 @@ export default function Header({ onDeveloperClick }: HeaderProps) {
               </Button>
             </motion.div>
 
-            <Button
+                        <Button
               variant="ghost"
               size="sm"
               onClick={() =>
@@ -248,9 +248,7 @@ export default function Header({ onDeveloperClick }: HeaderProps) {
                 className="flex items-center justify-start space-x-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all duration-200 py-3"
               >
                 <Github className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="font-medium text-sm sm:text-base">
-                  View on GitHub
-                </span>
+                <span className="font-medium text-sm sm:text-base">View on GitHub</span>
               </Button>
 
               <Button

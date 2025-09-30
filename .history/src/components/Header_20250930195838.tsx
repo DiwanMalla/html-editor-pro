@@ -81,21 +81,21 @@ export default function Header({ onDeveloperClick }: HeaderProps) {
         <div className="flex items-center justify-between h-14 sm:h-16 lg:h-18">
           {/* Logo and Title */}
           <motion.div
-            className="flex items-center space-x-2 sm:space-x-3 md:space-x-4"
+            className="flex items-center space-x-4"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <div className="relative group">
               <motion.div
-                className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-gradient-to-br from-violet-500 via-purple-500 to-pink-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg"
+                className="w-12 h-12 bg-gradient-to-br from-violet-500 via-purple-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg"
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <Code2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
+                <Code2 className="w-6 h-6 text-white" />
               </motion.div>
               <motion.div
-                className="absolute -top-0.5 -right-0.5 sm:-top-1 sm:-right-1 w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full shadow-lg"
+                className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full shadow-lg"
                 animate={{
                   scale: [1, 1.3, 1],
                   opacity: [0.8, 1, 0.8],
@@ -107,28 +107,18 @@ export default function Header({ onDeveloperClick }: HeaderProps) {
                 }}
               />
             </div>
-            <div className="min-w-0 flex-1 sm:flex-none sm:block">
-              <motion.h1
-                className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-pink-400 bg-clip-text text-transparent tracking-tight leading-tight truncate"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              >
+            <div className="hidden sm:block">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-slate-900 via-purple-900 to-slate-900 dark:from-white dark:via-purple-200 dark:to-white bg-clip-text text-transparent">
                 HTML Editor Pro
-              </motion.h1>
-              <motion.p
-                className="text-xs sm:text-sm text-slate-400 mt-0.5 sm:mt-1 font-medium tracking-wide hidden xs:block"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.4 }}
-              >
-                Professional code editor
-              </motion.p>
+              </h1>
+              <p className="text-sm text-slate-600 dark:text-slate-400 font-medium tracking-wide">
+                Code • Design • Deploy
+              </p>
             </div>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1.5 lg:space-x-2">
+          <div className="hidden md:flex items-center space-x-2">
             <motion.div
               className="flex items-center bg-slate-100 dark:bg-slate-800 rounded-xl p-1 shadow-inner"
               initial={{ opacity: 0, y: -10 }}
@@ -139,18 +129,18 @@ export default function Header({ onDeveloperClick }: HeaderProps) {
                 variant="ghost"
                 size="sm"
                 onClick={toggleTheme}
-                className={`flex items-center space-x-1.5 lg:space-x-2 rounded-lg transition-all duration-200 text-xs lg:text-sm ${
+                className={`flex items-center space-x-2 rounded-lg transition-all duration-200 ${
                   resolvedTheme === "dark"
                     ? "bg-white text-slate-900 shadow-sm"
                     : "bg-slate-900 text-white shadow-sm"
                 }`}
               >
                 {resolvedTheme === "dark" ? (
-                  <Moon className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
+                  <Moon className="w-4 h-4" />
                 ) : (
-                  <Sun className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
+                  <Sun className="w-4 h-4" />
                 )}
-                <span className="font-medium hidden lg:inline">
+                <span className="font-medium">
                   {resolvedTheme === "dark" ? "Dark" : "Light"}
                 </span>
               </Button>
@@ -165,20 +155,20 @@ export default function Header({ onDeveloperClick }: HeaderProps) {
                   "_blank"
                 )
               }
-              className="flex items-center space-x-1.5 lg:space-x-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all duration-200 text-xs lg:text-sm"
+              className="flex items-center space-x-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all duration-200"
             >
-              <Github className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
-              <span className="hidden lg:inline">GitHub</span>
+              <Github className="w-4 h-4" />
+              <span className="font-medium">GitHub</span>
             </Button>
 
             <Button
-              variant="ghost"
+              variant="outline"
               size="sm"
               onClick={onDeveloperClick}
-              className="flex items-center space-x-1.5 lg:space-x-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all duration-200 text-xs lg:text-sm"
+              className="flex items-center space-x-2 bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white border-0 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 font-medium"
             >
-              <User className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
-              <span className="hidden lg:inline">Developer</span>
+              <User className="w-4 h-4" />
+              <span>Developer</span>
             </Button>
           </div>
 
@@ -188,12 +178,11 @@ export default function Header({ onDeveloperClick }: HeaderProps) {
               variant="ghost"
               size="sm"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2"
             >
               {mobileMenuOpen ? (
-                <X className="w-4 h-4 sm:w-5 sm:h-5" />
+                <X className="w-5 h-5" />
               ) : (
-                <Menu className="w-4 h-4 sm:w-5 sm:h-5" />
+                <Menu className="w-5 h-5" />
               )}
             </Button>
           </div>
@@ -205,10 +194,10 @@ export default function Header({ onDeveloperClick }: HeaderProps) {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-slate-200/50 dark:border-slate-700/50 pt-3 sm:pt-4 pb-4 sm:pb-6 mt-3 sm:mt-4"
+            className="md:hidden border-t border-slate-200/50 dark:border-slate-700/50 pt-6 pb-6 mt-4"
           >
-            <div className="flex flex-col space-y-3 sm:space-y-4">
-              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-3 sm:p-4">
+            <div className="flex flex-col space-y-4">
+              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">
                     Appearance
@@ -245,12 +234,10 @@ export default function Header({ onDeveloperClick }: HeaderProps) {
                   );
                   setMobileMenuOpen(false);
                 }}
-                className="flex items-center justify-start space-x-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all duration-200 py-3"
+                className="flex items-center justify-start space-x-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-all duration-200"
               >
-                <Github className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="font-medium text-sm sm:text-base">
-                  View on GitHub
-                </span>
+                <Github className="w-5 h-5" />
+                <span className="font-medium">View on GitHub</span>
               </Button>
 
               <Button
@@ -260,10 +247,10 @@ export default function Header({ onDeveloperClick }: HeaderProps) {
                   onDeveloperClick();
                   setMobileMenuOpen(false);
                 }}
-                className="flex items-center justify-start space-x-3 bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white border-0 rounded-xl shadow-lg font-medium py-3"
+                className="flex items-center justify-start space-x-3 bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white border-0 rounded-xl shadow-lg font-medium"
               >
-                <User className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="text-sm sm:text-base">Meet the Developer</span>
+                <User className="w-5 h-5" />
+                <span>Meet the Developer</span>
               </Button>
             </div>
           </motion.div>

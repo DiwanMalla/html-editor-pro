@@ -14,8 +14,8 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-800">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 sm:-top-32 lg:-top-40 -right-16 sm:-right-24 lg:-right-32 w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 bg-gradient-to-br from-violet-200 to-purple-300 dark:from-violet-900/20 dark:to-purple-900/20 rounded-full blur-3xl opacity-50"></div>
-        <div className="absolute -bottom-16 sm:-bottom-24 lg:-bottom-32 -left-20 sm:-left-32 lg:-left-40 w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 bg-gradient-to-tr from-blue-200 to-cyan-300 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-full blur-3xl opacity-50"></div>
+        <div className="absolute -top-40 -right-32 w-96 h-96 bg-gradient-to-br from-violet-200 to-purple-300 dark:from-violet-900/20 dark:to-purple-900/20 rounded-full blur-3xl opacity-50"></div>
+        <div className="absolute -bottom-32 -left-40 w-96 h-96 bg-gradient-to-tr from-blue-200 to-cyan-300 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-full blur-3xl opacity-50"></div>
       </div>
 
       {/* Header */}

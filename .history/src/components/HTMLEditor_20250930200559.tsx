@@ -272,21 +272,18 @@ ${code.js}
                 variant={activeTab === tab.id ? "default" : "ghost"}
                 size="sm"
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center space-x-1.5 sm:space-x-2.5 rounded-lg transition-all duration-200 font-medium text-xs sm:text-sm whitespace-nowrap ${
+                className={`flex items-center space-x-2.5 rounded-lg transition-all duration-200 font-medium ${
                   activeTab === tab.id
                     ? "bg-white dark:bg-slate-600 shadow-lg shadow-slate-200/50 dark:shadow-slate-900/50 text-slate-900 dark:text-white"
                     : "hover:bg-white/70 dark:hover:bg-slate-600/70 text-slate-600 dark:text-slate-400"
                 }`}
               >
                 <div
-                  className={`${
-                    activeTab === tab.id ? "text-violet-500" : ""
-                  } flex-shrink-0`}
+                  className={`${activeTab === tab.id ? "text-violet-500" : ""}`}
                 >
                   {tab.icon}
                 </div>
-                <span className="hidden sm:inline">{tab.label}</span>
-                <span className="sm:hidden text-xs">{tab.label.charAt(0)}</span>
+                <span>{tab.label}</span>
               </Button>
             ))}
           </div>
@@ -380,17 +377,19 @@ ${code.js}
               theme="vs-dark"
               options={{
                 minimap: { enabled: false },
-                fontSize: 14,
-                lineNumbers: "on",
+                fontSize: window.innerWidth < 640 ? 12 : 14,
+                lineNumbers: window.innerWidth < 640 ? "off" : "on",
                 wordWrap: "on",
                 automaticLayout: true,
                 scrollBeyondLastLine: false,
-                folding: true,
-                lineDecorationsWidth: 10,
-                lineNumbersMinChars: 3,
-                padding: { top: 16 },
-                glyphMargin: true,
-                contextmenu: true,
+                folding: window.innerWidth >= 640,
+                lineDecorationsWidth: window.innerWidth < 640 ? 5 : 10,
+                lineNumbersMinChars: window.innerWidth < 640 ? 2 : 3,
+                padding: {
+                  top: window.innerWidth < 640 ? 8 : 16,
+                },
+                glyphMargin: window.innerWidth >= 640,
+                contextmenu: window.innerWidth >= 640,
               }}
             />
           </div>
@@ -426,7 +425,7 @@ ${code.js}
                     Live Preview
                   </h3>
                 </div>
-                <div className="flex-1 bg-white rounded-bl-none lg:rounded-bl-xl overflow-hidden shadow-inner">
+                <div className="flex-1 bg-white rounded-bl-xl overflow-hidden shadow-inner">
                   <iframe
                     srcDoc={generatePreview()}
                     className="w-full h-full border-0"

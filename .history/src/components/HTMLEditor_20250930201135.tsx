@@ -279,9 +279,7 @@ ${code.js}
                 }`}
               >
                 <div
-                  className={`${
-                    activeTab === tab.id ? "text-violet-500" : ""
-                  } flex-shrink-0`}
+                  className={`${activeTab === tab.id ? "text-violet-500" : ""} flex-shrink-0`}
                 >
                   {tab.icon}
                 </div>

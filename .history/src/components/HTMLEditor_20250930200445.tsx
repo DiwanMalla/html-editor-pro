@@ -272,21 +272,18 @@ ${code.js}
                 variant={activeTab === tab.id ? "default" : "ghost"}
                 size="sm"
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center space-x-1.5 sm:space-x-2.5 rounded-lg transition-all duration-200 font-medium text-xs sm:text-sm whitespace-nowrap ${
+                className={`flex items-center space-x-2.5 rounded-lg transition-all duration-200 font-medium ${
                   activeTab === tab.id
                     ? "bg-white dark:bg-slate-600 shadow-lg shadow-slate-200/50 dark:shadow-slate-900/50 text-slate-900 dark:text-white"
                     : "hover:bg-white/70 dark:hover:bg-slate-600/70 text-slate-600 dark:text-slate-400"
                 }`}
               >
                 <div
-                  className={`${
-                    activeTab === tab.id ? "text-violet-500" : ""
-                  } flex-shrink-0`}
+                  className={`${activeTab === tab.id ? "text-violet-500" : ""}`}
                 >
                   {tab.icon}
                 </div>
-                <span className="hidden sm:inline">{tab.label}</span>
-                <span className="sm:hidden text-xs">{tab.label.charAt(0)}</span>
+                <span>{tab.label}</span>
               </Button>
             ))}
           </div>
@@ -318,30 +315,30 @@ ${code.js}
             variant="ghost"
             size="sm"
             onClick={copyToClipboard}
-            className="flex items-center space-x-1.5 sm:space-x-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-xs sm:text-sm"
+            className="flex items-center space-x-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
           >
-            <Copy className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            <span className="font-medium hidden sm:inline">Copy</span>
+            <Copy className="w-4 h-4" />
+            <span className="font-medium">Copy</span>
           </Button>
 
           <Button
             variant="ghost"
             size="sm"
             onClick={downloadHTML}
-            className="flex items-center space-x-1.5 sm:space-x-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-xs sm:text-sm"
+            className="flex items-center space-x-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
           >
-            <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            <span className="font-medium hidden md:inline">Download</span>
+            <Download className="w-4 h-4" />
+            <span className="font-medium">Download</span>
           </Button>
 
           <Button
             variant="ghost"
             size="sm"
             onClick={resetCode}
-            className="flex items-center space-x-1.5 sm:space-x-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-xs sm:text-sm"
+            className="flex items-center space-x-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
           >
-            <RotateCcw className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            <span className="font-medium hidden lg:inline">Reset</span>
+            <RotateCcw className="w-4 h-4" />
+            <span className="font-medium">Reset</span>
           </Button>
 
           {onToggleFullscreen && (
@@ -349,14 +346,14 @@ ${code.js}
               variant="ghost"
               size="sm"
               onClick={onToggleFullscreen}
-              className="flex items-center space-x-1.5 sm:space-x-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white text-xs sm:text-sm"
+              className="flex items-center space-x-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
             >
               {isFullscreen ? (
-                <Minimize2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                <Minimize2 className="w-4 h-4" />
               ) : (
-                <Maximize2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                <Maximize2 className="w-4 h-4" />
               )}
-              <span className="font-medium hidden xl:inline">
+              <span className="font-medium">
                 {isFullscreen ? "Exit" : "Fullscreen"}
               </span>
             </Button>
@@ -365,12 +362,12 @@ ${code.js}
       </div>
 
       {/* Editor and Preview */}
-      <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
+      <div className="flex-1 flex overflow-hidden">
         {/* Code Editor */}
         <div
           className={`${
-            showPreview ? "w-full lg:w-1/2 h-1/2 lg:h-full" : "w-full h-full"
-          } flex flex-col border-b lg:border-b-0 lg:border-r border-slate-200/60 dark:border-slate-700/60`}
+            showPreview ? "w-1/2" : "w-full"
+          } flex flex-col border-r border-slate-200/60 dark:border-slate-700/60`}
         >
           <div className="flex-1 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm">
             <Editor
@@ -389,8 +386,6 @@ ${code.js}
                 lineDecorationsWidth: 10,
                 lineNumbersMinChars: 3,
                 padding: { top: 16 },
-                glyphMargin: true,
-                contextmenu: true,
               }}
             />
           </div>
@@ -400,33 +395,21 @@ ${code.js}
         <AnimatePresence>
           {showPreview && (
             <motion.div
-              className="w-full lg:w-1/2 h-1/2 lg:h-full bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm"
-              initial={{
-                width: window.innerWidth >= 1024 ? 0 : "100%",
-                height: window.innerWidth >= 1024 ? "100%" : 0,
-                opacity: 0,
-              }}
-              animate={{
-                width: window.innerWidth >= 1024 ? "50%" : "100%",
-                height: window.innerWidth >= 1024 ? "100%" : "50%",
-                opacity: 1,
-              }}
-              exit={{
-                width: window.innerWidth >= 1024 ? 0 : "100%",
-                height: window.innerWidth >= 1024 ? "100%" : 0,
-                opacity: 0,
-              }}
+              className="w-1/2 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm"
+              initial={{ width: 0, opacity: 0 }}
+              animate={{ width: "50%", opacity: 1 }}
+              exit={{ width: 0, opacity: 0 }}
               transition={{ type: "spring", duration: 0.4, ease: "easeOut" }}
             >
               <div className="h-full flex flex-col">
-                <div className="p-2 sm:p-3 lg:p-4 bg-slate-50/80 dark:bg-slate-700/80 backdrop-blur-sm border-b border-slate-200/60 dark:border-slate-600/60">
-                  <h3 className="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center">
-                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-400 rounded-full mr-2 sm:mr-3 animate-pulse"></div>
-                    <Eye className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 text-slate-500" />
+                <div className="p-4 bg-slate-50/80 dark:bg-slate-700/80 backdrop-blur-sm border-b border-slate-200/60 dark:border-slate-600/60">
+                  <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center">
+                    <div className="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse"></div>
+                    <Eye className="w-4 h-4 mr-2 text-slate-500" />
                     Live Preview
                   </h3>
                 </div>
-                <div className="flex-1 bg-white rounded-bl-none lg:rounded-bl-xl overflow-hidden shadow-inner">
+                <div className="flex-1 bg-white rounded-bl-xl overflow-hidden shadow-inner">
                   <iframe
                     srcDoc={generatePreview()}
                     className="w-full h-full border-0"

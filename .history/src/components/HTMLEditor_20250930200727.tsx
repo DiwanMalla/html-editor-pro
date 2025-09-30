@@ -19,7 +19,9 @@ import { Button } from "@/components/ui/Button";
 interface EditorTab {
   id: string;
   label: string;
-  language: string;
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}ing;
   icon: React.ReactNode;
   defaultValue: string;
 }
@@ -279,9 +281,7 @@ ${code.js}
                 }`}
               >
                 <div
-                  className={`${
-                    activeTab === tab.id ? "text-violet-500" : ""
-                  } flex-shrink-0`}
+                  className={`${activeTab === tab.id ? "text-violet-500" : ""} flex-shrink-0`}
                 >
                   {tab.icon}
                 </div>
