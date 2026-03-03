@@ -16,7 +16,6 @@ import {
   Minimize2,
   Sparkles,
   Loader2,
-  Save,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
@@ -202,8 +201,8 @@ export default function HTMLEditor({
   }, [code, isMounted]);
 
   // Debounced preview update
-  const updatePreview = useCallback(
-    debounce((currentCode: Record<string, string>) => {
+  const updatePreview = React.useMemo(
+    () => debounce((currentCode: Record<string, string>) => {
       const bodyContent = currentCode.html
         .replace(/<!DOCTYPE.*?>/i, "")
         .replace(/<html[^>]*>/i, "")

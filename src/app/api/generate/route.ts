@@ -75,7 +75,7 @@ Example Response:
     try {
       const parsedJSON = JSON.parse(generatedContent);
       return NextResponse.json(parsedJSON);
-    } catch (e) {
+    } catch (_e) {
       console.error("Failed to parse AI JSON response", generatedContent);
       return NextResponse.json({ error: "Invalid AI response format" }, { status: 500 });
     }
