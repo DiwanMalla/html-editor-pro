@@ -3,6 +3,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Editor } from "@monaco-editor/react";
+import { debounce } from "lodash";
 import {
   Code,
   Palette,
@@ -13,6 +14,9 @@ import {
   RotateCcw,
   Maximize2,
   Minimize2,
+  Sparkles,
+  Loader2,
+  Save,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
@@ -153,15 +157,30 @@ export default function HTMLEditor({
 }: HTMLEditorProps) {
   const [activeTab, setActiveTab] = useState("html");
   const [code, setCode] = useState<Record<string, string>>({
-    html: editorTabs[0].defaultValue,
-    css: editorTabs[1].defaultValue,
-    js: editorTabs[2].defaultValue,
+    html: "",
+    css: "",
+    js: "",
   });
+  const [previewDoc, setPreviewDoc] = useState("");
   const [showPreview, setShowPreview] = useState(true);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [prompt, setPrompt] = useState("");
+  const [isGenerating, setIsGenerating] = useState(false);
 
+  // Load code from localStorage on mount
   useEffect(() => {
+    const savedCode = localStorage.getItem("html-editor-pro-code");
+    if (savedCode) {
+      setCode(JSON.parse(savedCode));
+    } else {
+      setCode({
+        html: editorTabs[0].defaultValue,
+        css: editorTabs[1].defaultValue,
+        js: editorTabs[2].defaultValue,
+      });
+    }
+    
     setIsMounted(true);
     const checkScreenSize = () => {
       setIsLargeScreen(window.innerWidth >= 1024);
@@ -174,6 +193,47 @@ export default function HTMLEditor({
       window.removeEventListener('resize', checkScreenSize);
     };
   }, []);
+
+  // Save code to localStorage whenever it changes
+  useEffect(() => {
+    if (isMounted) {
+      localStorage.setItem("html-editor-pro-code", JSON.stringify(code));
+    }
+  }, [code, isMounted]);
+
+  // Debounced preview update
+  const updatePreview = useCallback(
+    debounce((currentCode: Record<string, string>) => {
+      const bodyContent = currentCode.html
+        .replace(/<!DOCTYPE.*?>/i, "")
+        .replace(/<html[^>]*>/i, "")
+        .replace(/<head>[\s\S]*?<\/head>/i, "")
+        .replace(/<\/?html[^>]*>/gi, "")
+        .replace(/<\/?body[^>]*>/gi, "")
+        .trim();
+
+      const doc = `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <style>${currentCode.css}</style>
+        </head>
+        <body>
+          ${bodyContent}
+          <script>${currentCode.js}</script>
+        </body>
+        </html>
+      `;
+      setPreviewDoc(doc);
+    }, 500),
+    []
+  );
+
+  useEffect(() => {
+    updatePreview(code);
+  }, [code, updatePreview]);
 
   const handleEditorChange = useCallback(
     (value: string | undefined, tabId: string) => {
@@ -241,35 +301,41 @@ ${code.js}
     }
   };
 
-  const generatePreview = () => {
-    // Extract body content from HTML, removing the closing body and html tags
-    const bodyContent = code.html
-      .replace(/<!DOCTYPE.*?>/i, "")
-      .replace(/<html[^>]*>/i, "")
-      .replace(/<head>[\s\S]*?<\/head>/i, "")
-      .replace(/<\/?html[^>]*>/gi, "")
-      .replace(/<\/?body[^>]*>/gi, "")
-      .trim();
+  const generateWithAI = async () => {
+    if (!prompt.trim()) return;
+    setIsGenerating(true);
+    try {
+      const response = await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          prompt,
+          currentHtml: code.html,
+          currentCss: code.css,
+          currentJs: code.js
+        }),
+      });
 
-    return `
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Preview</title>
-        <style>
-          ${code.css}
-        </style>
-      </head>
-      <body>
-        ${bodyContent}
-        <script>
-          ${code.js}
-        </script>
-      </body>
-      </html>
-    `;
+      if (!response.ok) {
+        throw new Error("Failed to generate code");
+      }
+
+      const data = await response.json();
+      setCode((prev) => ({
+        ...prev,
+        html: data.html ?? prev.html,
+        css: data.css ?? prev.css,
+        js: data.js ?? prev.js
+      }));
+      setPrompt("");
+    } catch (error) {
+      console.error(error);
+      alert("Failed to generate code. Check if GROQ_API_KEY is configured.");
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   const currentTab = editorTabs.find((tab) => tab.id === activeTab);
@@ -390,7 +456,35 @@ ${code.js}
             showPreview ? "w-full lg:w-1/2 h-1/2 lg:h-full" : "w-full h-full"
           } flex flex-col border-b lg:border-b-0 lg:border-r border-slate-200/60 dark:border-slate-700/60`}
         >
-          <div className="flex-1 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm">
+          {/* AI Prompt Bar */}
+          <div className="p-3 border-b border-slate-200/60 dark:border-slate-700/60 bg-white/50 dark:bg-slate-800/50 shrink-0">
+            <div className="relative flex items-center">
+              <input
+                type="text"
+                value={prompt}
+                onChange={(e) => setPrompt(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') generateWithAI();
+                }}
+                placeholder={`Ask AI to write ${activeTab.toUpperCase()}... e.g. "make a responsive navbar"`}
+                className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg pl-3 pr-24 py-2 text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-violet-500 focus:border-violet-500 transition-colors placeholder:text-slate-400 dark:placeholder:text-slate-500 shadow-sm"
+              />
+              <button
+                onClick={generateWithAI}
+                disabled={isGenerating || !prompt.trim()}
+                className="absolute right-1.5 px-3 py-1 bg-gradient-to-r from-violet-500 to-purple-600 hover:from-violet-600 hover:to-purple-700 text-white text-xs font-medium rounded-md flex items-center gap-1.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
+              >
+                {isGenerating ? (
+                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                ) : (
+                  <Sparkles className="w-3.5 h-3.5" />
+                )}
+                Generate
+              </button>
+            </div>
+          </div>
+
+          <div className="flex-1 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm relative">
             <Editor
               language={currentTab?.language}
               value={code[activeTab]}
@@ -446,7 +540,7 @@ ${code.js}
                 </div>
                 <div className="flex-1 bg-white rounded-bl-none lg:rounded-bl-xl overflow-hidden shadow-inner">
                   <iframe
-                    srcDoc={generatePreview()}
+                    srcDoc={previewDoc}
                     className="w-full h-full border-0"
                     sandbox="allow-scripts allow-same-origin"
                     title="Live Preview"
